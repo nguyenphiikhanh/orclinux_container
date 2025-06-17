@@ -11,9 +11,4 @@ services:
     container_name: oracle-linux
     ports:
       - "${SSH_PORT}:22"
-    volumes:
-      - ./server/ssh:/etc/ssh
-      - ./server/home:/home
-      - ./server/log:/var/log
-      - ./server/dnf:/var/cache/dnf
     restart: unless-stopped
