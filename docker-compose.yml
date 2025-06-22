@@ -2,20 +2,13 @@ version: '3.8'
 
 services:
   oracledb:
-    image: container-registry.oracle.com/database/express:21.3.0-xe
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   args:
-    #     ORA_SSH_USER: ${ORA_SSH_USER}
-    #     ORA_SSH_PASSWORD: ${ORA_SSH_PASSWORD}
-    container_name: oracle-db-23ai
+    image: nguyenphiikhanh/oracle-19c:ee
+    container_name: oracle-db-19c-ee
     ports:
-      - "${ORA_SSH_PORT}:22"
       - "${ORA_HOST_PORT}:1521"
-      - "${ORA_EM_EXPRESS_PORT}:5500"
+      - "${ORA_OEM_PORT}:5500"
     environment:
-      - ORACLE_PWD=${ORA_SYS_PASSWORD}
+      - ORA_PDB=${ORA_PDB}
+      - ORACLE_PWD=${ORA_PWD}
     volumes:
       - ./oradata/:/opt/oracle/oradata/
-    restart: unless-stopped
